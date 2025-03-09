@@ -88,7 +88,7 @@ Pay attention to the firewall section because having an open application ports o
 Allow your client IP and block all other IPs
 
 ```bash 
-iptables -A INPUT -s [IP-GOES-HERE] -j ACCEPT`
+iptables -A INPUT -s [IP-GOES-HERE] -j ACCEPT
 
 iptables -A INPUT -j REJECT --reject-with icmp-host-prohibited
 ```
