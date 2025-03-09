@@ -7,12 +7,37 @@ This guide documents how to install and configure [FreeSWITCH](https://signalwir
 
 ## What?
 
-Connect phone calls to voice, video, chat and canvas web applications to servers and peer-to-peer.
+Connect voice, video, chat and canvas web applications, phone calls to servers and peer-to-peer.
 
-[WebRTC](https://webrtc.org/) (real time communication) is an open standard [HTML5 specification](https://www.w3.org/TR/webrtc/) supported by Apple, Google, Microsoft and Mozilla, amongst others.
+This can be done using the [WebRTC](https://webrtc.org/) (real time communication) [HTML5 specification](https://www.w3.org/TR/webrtc/) and a FreeSWITCH server.
 
-This guide documents how to install and configure [FreeSWITCH](https://signalwire.com/freeswitch) on [Debian](https://www.debian.org/) 12 to create a WebRTC server as a proof of concept.
+[FreeSWITCH](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/) is an open source carrier-grade telephony platform implemented as a back-to-back user agent.
 
+FreeSWITCH module [Verto](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Modules/mod_verto_3964934/) implements a "subset of a JSON-RPC connection designed for use over secure websockets".
+
+FreeSWITCH connects [endpoints](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Introduction/Endpoints/) including
+
+- WebRTC (Verto)
+- VOIP applications (SIP, H323, IAX2, SCCP, GSM)
+- Telephony [Zaptel](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Interoperability/OpenZap/Zapata-zaptel/Zapata-zaptel-interface_13173132/)
+- Audio/video devices (ALSA, PortAudio)
+
+FreeSWITCH has [modules](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Modules/) implementing
+
+- Java
+- Lua
+- Perl
+- Python
+- Ruby
+- Curl
+- v8 (Javascript)
+- Verious media codecs
+- MongoDB
+- Memcache
+- ODBC
+- XML
+- Event Socket Layer
+- [REST](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Modules/mod-verto/RESTful-Verto_8454242/)
 
 
 ## Why?
