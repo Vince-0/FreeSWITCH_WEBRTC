@@ -7,6 +7,11 @@ This guide documents how to install and configure [FreeSWITCH](https://signalwir
 
 ## What?
 
+<p align="center">
+<img src="https://github.com/Vince-0/FreeSWITCH_WEBRTC/blob/85b3d117a4d24f82a80262456e2a9f3229a3a54b/FreeSWITCH_WebRTC_bg.png" />
+</p>
+
+
 Connect voice, video, chat and canvas web applications, phone calls to servers and peer-to-peer.
 
 This can be done using the [WebRTC](https://webrtc.org/) (real time communication) [HTML5 specification](https://www.w3.org/TR/webrtc/) and a FreeSWITCH server.
