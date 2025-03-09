@@ -68,11 +68,33 @@ WebRTC enabled applications with use cases for
 
 ## How
 
-### 1. Create a Signal Wire Personal Access Token
+### Requirements
+
+### Create a Signal Wire Personal Access Token to access the FreeSWITCH repository
 
 https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Installation/how-to-create-a-personal-access-token/how-to-create-a-personal-access-token/
 
-### 2. Install FreeSWITCH from Signal Wire repository
+A softphone [MicroSIP](https://www.microsip.org/downloads/?file) for Windows or [Linphone](https://www.linphone.org/en/getting-started/) for any platform.
+
+A web browser, any Chromium engine based will do like Chrome, Brave, MS Edge or Firefox will do.
+
+A public IP addressed virtual manchine works best with a Linux OS. I used Debian 12. Log in via SSH and use root to prepare the OS.
+
+
+### Security
+Refer to my [security basics](https://github.com/Vince-0/Security-Basics) notes for a new Linux server.
+
+Pay attention to the firewall section because having an open application ports on the Internet is a very bad idea.
+
+Allow your client IP and block all other IPs
+
+```bash 
+iptables -A INPUT -s [IP-GOES-HERE] -j ACCEPT`
+
+iptables -A INPUT -j REJECT --reject-with icmp-host-prohibited
+```
+
+### Install FreeSWITCH from Signal Wire repository
 
 ```bash
 # Set your Signal Wire token
@@ -102,7 +124,7 @@ apt-get update && apt-get install -y freeswitch-meta-all
 
 ```
 
-### 3. Configure FreeSWITCH Global Variables
+### Configure FreeSWITCH global variables
 
 Edit the FreeSWITCH configuration file to set:
 
@@ -116,7 +138,7 @@ Edit the FreeSWITCH configuration file to set:
 <X-PRE-PROCESS cmd="set" data="default_password=1234"/>
 ```
 
-### 4. Start and Verify FreeSWITCH
+### Start and verify FreeSWITCH
 
 ```bash
 
@@ -138,7 +160,7 @@ fs_cli
 
 ```
 
-### 5. Configure TLS Certificates with Certbot
+### Configure TLS certificates with Certbot
 
 ```bash
 
@@ -160,7 +182,7 @@ certbot certonly --standalone -d <HOSTNAME>
 
 ```
 
-### 6. Prepare Certificate for FreeSWITCH
+### Prepare TLS certificate for FreeSWITCH
 
 ```bash
 
@@ -188,12 +210,60 @@ systemctl restart freeswitch
 
 ```
 
+### Configure clients
+
+FreeSWITCH has a default configured endpoint directory in /etc/freeswitch/directory/default/
+
+This includes files for 1000.xml to 1019.xml and example files. This isn't ideal but changing the default password in the global variables file var.xml above will at least help prevent abuse.
+
+## Configure a WebRTC client
+
+[Duobango's SIPML5]([https://www.doubango.org/sipml5/call.htm?svn=252](https://www.doubango.org/sipml5/index.html)) live demo.
+
+Display Name: 1001
+Private Identity*: 1001
+Public Identity*: sips:1001@<HOSTNAME>
+Password: <DEFAULTPASSWORD>
+Realm*: <HOSTNAME>
+
+Click on "Expert Mode?"
+
+Expert settings
+Disable Video: <CHECK>
+Enable RTCWeb Breaker: <UNCHECK>
+WebSocket Server URL: wss://<HOSTNAME>:7443/ws
+
+Click Save and go back to the "Registration" tab and "Login".
+
+"Connected" should appear at the top.
+
+There should be a FreeSWITCH cli output:
+
+sofia_reg.c:1842 SIP auth challenge (REGISTER) on sofia profile 'internal' for [1001@<HOSTIP>] from ip <CLIENTIP>
+
+## Configure a SIP client
+
+Using 1002 as a user and the same details as the WebRTC client above.
+
+## Call 
+
+Call 1002 from 1001 or visa versa and a call will ring.
+
+One could call two WebRTC clients or two SIP clients, connect calls to conference facilities, telephony providers or call center functionality.
+
+## Further development
+
+- Traverse NAT networks better with ICE using STUN/TURN.
+- Use a packaged PBX application for FreeSWITCH like [FusionPBX](https://www.fusionpbx.com/)
+- Create web applications that integrate with client libraries like [JsSIP](https://jssip.net/) and [SIP.js](https://sipjs.com/)
+
+
 ## References
 
 - [FreeSWITCH Configuration Guide](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Configuration/Configuring-FreeSWITCH/)
 
 - [FreeSWITCH mod_verto Module](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Modules/mod_verto_3964934/)
 
-- [FreeSWITCH WebRTC with SIPML5](https://nickvsnetworking.com/freeswitch-webrtc-with-sipml5/)
+- [Nick's FreeSWITCH WebRTC with SIPML5](https://nickvsnetworking.com/freeswitch-webrtc-with-sipml5/)
 
 - [SIPML5 Documentation](https://www.doubango.org/sipml5/index.html)
