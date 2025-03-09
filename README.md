@@ -70,9 +70,8 @@ WebRTC enabled applications with use cases for
 
 ### Requirements
 
-### Create a Signal Wire Personal Access Token to access the FreeSWITCH repository
-
-https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Installation/how-to-create-a-personal-access-token/how-to-create-a-personal-access-token/
+Create a Signal Wire Personal Access Token to access the FreeSWITCH repository [here](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Installation/how-to-create-a-personal-access-token/how-to-create-a-personal-access-token/
+)
 
 A softphone [MicroSIP](https://www.microsip.org/downloads/?file) for Windows or [Linphone](https://www.linphone.org/en/getting-started/) for any platform.
 
