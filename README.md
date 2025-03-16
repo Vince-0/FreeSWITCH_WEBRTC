@@ -217,7 +217,7 @@ This includes files for 1000.xml to 1019.xml and example files. This isn't ideal
 
 ## Configure a WebRTC client
 
-[Duobango's SIPML5]([https://www.doubango.org/sipml5/call.htm?svn=252](https://www.doubango.org/sipml5/index.html)) live demo.
+[Duobango's SIPML5](https://www.doubango.org/sipml5/index.html) live demo.
 
 Display Name: 1001
 Private Identity*: 1001
