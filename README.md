@@ -1,16 +1,13 @@
 # VoIP WebRTC Server
+Connect VOIP phone calls using a WebRTC server with [FreeSWITCH](https://signalwire.com/freeswitch) on [Debian](https://www.debian.org/) 12.
 
 Author [https://github.com/Vince-0](https://github.com/Vince-0/Projects)
-
-This guide documents how to install and configure [FreeSWITCH](https://signalwire.com/freeswitch) on [Debian](https://www.debian.org/) 12 to create a WebRTC server as a proof of concept.
-
 
 ## What?
 
 <p align="center">
 <img src="https://github.com/Vince-0/FreeSWITCH_WEBRTC/blob/85b3d117a4d24f82a80262456e2a9f3229a3a54b/FreeSWITCH_WebRTC_bg.png" />
 </p>
-
 
 Connect voice, video, chat and canvas web applications, phone calls to servers and peer-to-peer.
 
