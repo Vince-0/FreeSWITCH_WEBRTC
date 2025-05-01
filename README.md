@@ -3,6 +3,8 @@ Connect VOIP phone calls using a WebRTC server with [FreeSWITCH](https://signalw
 
 Author [https://github.com/Vince-0](https://github.com/Vince-0/Projects)
 
+Use at your own risk.
+
 ## What?
 
 <p align="center">
